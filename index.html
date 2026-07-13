@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statixx Solutions | Software Development and IT Consulting</title>
+<meta name="description" content="Statixx Solutions is a software development and IT consulting company based in Texas, working with clients across the United States.">
+<meta property="og:title" content="Statixx Solutions | Software Development and IT Consulting">
+<meta property="og:description" content="We build websites, web applications, and business software for startups and small businesses across the United States.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://statixx.dev">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f8fa;
+  --paper-2:#ffffff;
+  --ink:#0e1626;
+  --muted:#5a6577;
+  --hairline:#dde2ea;
+  --signal:#2e5bff;
+  --signal-ink:#1e3fd4;
+  --tick:#9aa5b8;
+  --maxw:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:'Instrument Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--signal);color:#fff}
+h1,h2,h3{font-family:'Schibsted Grotesk',sans-serif;line-height:1.12;letter-spacing:-.015em}
+a{color:var(--signal-ink);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.mono{font-family:'Red Hat Mono',monospace}
+
+/* ---------- top status strip ---------- */
+.strip{
+  border-bottom:1px solid var(--hairline);background:var(--paper-2);
+  font-family:'Red Hat Mono',monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--tick);text-transform:uppercase;
+}
+.strip .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:9px;padding-bottom:9px}
+.strip .dot{color:var(--signal)}
+@media(max-width:700px){.strip .hide-sm{display:none}}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(247,248,250,.88);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:.1em;color:var(--ink)}
+.brand .xx{color:var(--signal)}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{color:var(--muted);font-size:14.5px;font-weight:500;transition:color .18s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  background:var(--ink);color:#fff!important;padding:9px 20px;border-radius:100px;
+  font-weight:600;transition:background .18s;
+}
+.nav-cta:hover{background:var(--signal)}
+@media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:104px 0 0;border-bottom:1px solid var(--hairline);background:var(--paper-2)}
+.hero .kicker{
+  font-family:'Red Hat Mono',monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--signal);margin-bottom:26px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero .kicker::before{content:"";width:34px;height:1px;background:var(--signal)}
+.hero h1{font-size:clamp(40px,6.2vw,68px);font-weight:700;max-width:17ch}
+.hero .lede{margin-top:28px;max-width:56ch;color:var(--muted);font-size:19px}
+.hero-ctas{margin-top:40px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-block;font-family:'Schibsted Grotesk',sans-serif;font-weight:600;
+  font-size:15.5px;padding:14px 30px;border-radius:100px;transition:all .18s;
+}
+.btn-primary{background:var(--signal);color:#fff}
+.btn-primary:hover{background:var(--signal-ink);transform:translateY(-1px)}
+.hero-email{font-size:15px;color:var(--muted)}
+.hero-email a{font-weight:500}
+.scope-block{margin-top:76px;border-top:1px solid var(--hairline);padding-top:44px}
+.scope-tagline{
+  font-family:'Schibsted Grotesk',sans-serif;font-weight:600;
+  font-size:clamp(19px,2.4vw,24px);text-align:center;letter-spacing:-.01em;
+}
+.scope-tagline em{font-style:normal;color:var(--signal)}
+.scope-sub{
+  text-align:center;font-size:14.5px;color:var(--muted);
+  max-width:52ch;margin:10px auto 0;
+}
+#scope{display:block;width:100%;height:110px;margin-top:26px}
+.scope-meta{
+  border-top:1px solid var(--hairline);
+  font-family:'Red Hat Mono',monospace;font-size:10.5px;letter-spacing:.16em;
+  color:var(--tick);text-transform:uppercase;
+  display:flex;justify-content:space-between;padding:10px 0 28px;
+}
+
+/* ---------- generic section ---------- */
+section{padding:104px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,4.2vw,44px);font-weight:600;max-width:20ch}
+.sec-label{
+  font-family:'Red Hat Mono',monospace;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tick);margin-bottom:16px;
+}
+.sec-head p{color:var(--muted);max-width:40ch;font-size:16px}
+
+/* ---------- services: ledger rows ---------- */
+.svc-list{border-top:1px solid var(--hairline)}
+.svc-row{
+  display:grid;grid-template-columns:90px 1.1fr 1.6fr;gap:28px;
+  padding:30px 0;border-bottom:1px solid var(--hairline);
+  transition:background .18s;position:relative;
+}
+.svc-row:hover{background:var(--paper-2)}
+.svc-row:hover .svc-id{color:var(--signal)}
+.svc-id{font-family:'Red Hat Mono',monospace;font-size:12.5px;color:var(--tick);letter-spacing:.12em;padding-top:5px;transition:color .18s}
+.svc-row h3{font-size:20px;font-weight:600}
+.svc-row .svc-desc{color:var(--muted);font-size:15.5px}
+.svc-row .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.tags span{
+  font-family:'Red Hat Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+  color:var(--muted);border:1px solid var(--hairline);border-radius:100px;
+  padding:3px 10px;background:var(--paper-2);
+}
+@media(max-width:760px){
+  .svc-row{grid-template-columns:1fr;gap:8px;padding:26px 0}
+  .svc-id{padding-top:0}
+}
+
+/* ---------- process ---------- */
+#process{background:var(--paper-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--hairline)}
+@media(max-width:880px){.timeline{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.timeline{grid-template-columns:1fr}}
+.tl-step{border-right:1px solid var(--hairline);padding:8px 28px 8px 24px;position:relative}
+.tl-step::before{
+  content:"";position:absolute;top:14px;left:-4.5px;width:8px;height:8px;
+  border-radius:50%;background:var(--signal);
+}
+@media(max-width:880px){.tl-step{padding-bottom:28px}}
+.tl-step .num{font-family:'Red Hat Mono',monospace;font-size:11.5px;letter-spacing:.16em;color:var(--tick)}
+.tl-step h3{font-size:18.5px;margin:10px 0 8px}
+.tl-step p{font-size:15px;color:var(--muted)}
+
+/* ---------- about / coverage ---------- */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:72px;align-items:start}
+@media(max-width:840px){.about-grid{grid-template-columns:1fr;gap:44px}}
+.about-grid .body p{color:var(--muted);margin-bottom:18px}
+.about-grid .body p strong{color:var(--ink);font-weight:600}
+.coverage{
+  border:1px solid var(--hairline);border-radius:14px;background:var(--paper-2);
+  padding:30px;box-shadow:0 1px 2px rgba(14,22,38,.04);
+}
+.coverage .cv-label{font-family:'Red Hat Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tick)}
+.tz-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--hairline);padding:14px 0;
+}
+.tz-row:last-of-type{border-bottom:none}
+.tz-row .zone{font-weight:600;font-size:15.5px}
+.tz-row .time{font-family:'Red Hat Mono',monospace;font-size:14px;color:var(--muted)}
+.coverage .foot{
+  margin-top:14px;font-size:13.5px;color:var(--muted);
+  padding-top:14px;border-top:1px solid var(--hairline);
+}
+.coverage .foot .dot{color:var(--signal)}
+
+/* ---------- capability strip ---------- */
+.stackline{border-top:1px solid var(--hairline);background:var(--paper-2);overflow:hidden;padding:22px 0}
+.stack-track{display:flex;gap:44px;white-space:nowrap;animation:ticker 42s linear infinite;width:max-content}
+.stack-track span{font-family:'Red Hat Mono',monospace;font-size:12.5px;letter-spacing:.1em;color:var(--muted)}
+.stack-track span::before{content:"+ ";color:var(--signal)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- contact ---------- */
+#contact{background:var(--ink);color:#f2f5fa;padding:110px 0}
+#contact .sec-label{color:#6f7d95}
+#contact h2{font-size:clamp(32px,5vw,50px);font-weight:600;max-width:22ch;color:#fff}
+#contact p{color:#aab4c6;margin:22px 0 0;max-width:54ch}
+.contact-card{
+  margin-top:44px;display:flex;gap:56px;flex-wrap:wrap;
+  border-top:1px solid #2a3550;padding-top:38px;
+}
+.contact-item .label{
+  font-family:'Red Hat Mono',monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#7c8699;margin-bottom:8px;
+}
+.contact-item .value{font-size:18px;font-weight:500;color:#fff}
+.contact-item .value a{color:#9db4ff}
+#contact .btn-primary{margin-top:40px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);border-top:1px solid #232f47;padding:30px 0;font-size:13.5px;color:#6f7d95}
+.foot-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#8a96ab}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .stack-track{animation:none}
+  .btn-primary:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <span><span class="dot">●</span>&nbsp; NOW ACCEPTING NEW PROJECTS</span>
+    <span class="hide-sm">WORKING WITH CLIENTS ACROSS THE UNITED STATES</span>
+    <span>TEXAS, USA</span>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">STATI<span class="xx">XX</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#process">How We Work</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="kicker">Software Development and IT Consulting</p>
+    <h1>Custom software for startups and growing businesses</h1>
+    <p class="lede">Statixx Solutions builds websites, web applications, and business software. We are based in Texas and work with clients across the United States. Every project starts with a written scope and ends with you owning everything we build.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <span class="hero-email">or email <a href="mailto:contact@statixx.dev">contact@statixx.dev</a></span>
+    </div>
+    <div class="scope-block">
+      <p class="scope-tagline">We turn noise into <em>signal</em>.</p>
+      <p class="scope-sub">Rough ideas, changing requirements, half-built systems. We take what is unclear and deliver software you can ship.</p>
+      <canvas id="scope" aria-hidden="true"></canvas>
+    </div>
+    <div class="scope-meta" aria-hidden="true">
+      <span>Noise</span><span>Signal</span>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="sec-label">Services</p>
+        <h2>What we do</h2>
+      </div>
+      <p>Most of our work falls into these areas. If your project does not fit neatly into one of them, reach out anyway and we will tell you honestly whether we can help.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row">
+        <span class="svc-id">01</span>
+        <h3>Websites and web applications</h3>
+        <div>
+          <p class="svc-desc">We design and build websites and web apps from the ground up, from a simple company site to a full product with user accounts, payments, and a database behind it.</p>
+          <div class="tags"><span>React</span><span>Node.js</span><span>Python</span></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">02</span>
+        <h3>AI features</h3>
+        <div>
+          <p class="svc-desc">We add AI to existing products and workflows. Common projects include customer support chatbots, document search, and tools that summarize or sort information automatically.</p>
+          <div class="tags"><span>OpenAI</span><span>Anthropic</span><span>Chatbots</span></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">03</span>
+        <h3>Online stores</h3>
+        <div>
+          <p class="svc-desc">We build and fix ecommerce sites on Shopify, WordPress, and custom platforms. That includes payment setup, shipping integrations, and search engine optimization.</p>
+          <div class="tags"><span>Shopify</span><span>WordPress</span><span>Payments</span></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">04</span>
+        <h3>Testing and automation</h3>
+        <div>
+          <p class="svc-desc">We write automated tests for existing software so bugs get caught before release, and we automate the repetitive manual work that slows teams down.</p>
+          <div class="tags"><span>Selenium</span><span>API testing</span><span>CI/CD</span></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">05</span>
+        <h3>System integrations</h3>
+        <div>
+          <p class="svc-desc">We connect the tools a business already uses, such as payment providers, CRMs, and inventory systems, so data moves between them without manual entry.</p>
+          <div class="tags"><span>APIs</span><span>CRMs</span><span>Data sync</span></div>
+        </div>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">06</span>
+        <h3>Ongoing support</h3>
+        <div>
+          <p class="svc-desc">We maintain and update software after launch. Clients keep a direct line to the developer who built their project, not a ticket queue.</p>
+          <div class="tags"><span>Maintenance</span><span>Updates</span><span>Hosting</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="sec-label">Process</p>
+        <h2>How we work</h2>
+      </div>
+      <p>Simple and predictable. You will always know what is being built, what it costs, and when it will be done.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step">
+        <span class="num">STEP 1</span>
+        <h3>Scope</h3>
+        <p>We start with a call to understand what you need, then put the scope, price, and timeline in writing before any work begins.</p>
+      </div>
+      <div class="tl-step">
+        <span class="num">STEP 2</span>
+        <h3>Build</h3>
+        <p>We build in stages and share progress along the way, so you review working software instead of waiting for a big reveal.</p>
+      </div>
+      <div class="tl-step">
+        <span class="num">STEP 3</span>
+        <h3>Launch</h3>
+        <p>We handle deployment and hand over everything: the code, the accounts, and plain instructions for running it.</p>
+      </div>
+      <div class="tl-step">
+        <span class="num">STEP 4</span>
+        <h3>Support</h3>
+        <p>After launch we stay available for fixes, changes, and questions. Most clients keep us on for small updates as they grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="sec-label">About</p>
+        <h2>A small company, on purpose</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="body">
+        <p><strong>Statixx Solutions</strong> is a software company run by engineers. The name comes from static, because that is how most projects arrive: a lot of noise and no clear picture. We spent years building and testing software at larger companies, and we started Statixx to do that work directly for the clients who need it.</p>
+        <p>Being small is the point. When you hire us, the person you talk to is the person writing the code. Projects move faster, questions get straight answers, and nothing gets lost between departments.</p>
+        <p>We work remotely with <strong>startups</strong> turning an idea into a working product and with <strong>small businesses</strong> that need their website, store, or internal tools built right the first time.</p>
+      </div>
+      <aside class="coverage" aria-label="US coverage">
+        <p class="cv-label">We work in every US time zone</p>
+        <div class="tz-row"><span class="zone">Eastern</span><span class="time" data-tz="America/New_York">--:--</span></div>
+        <div class="tz-row"><span class="zone">Central</span><span class="time" data-tz="America/Chicago">--:--</span></div>
+        <div class="tz-row"><span class="zone">Mountain</span><span class="time" data-tz="America/Denver">--:--</span></div>
+        <div class="tz-row"><span class="zone">Pacific</span><span class="time" data-tz="America/Los_Angeles">--:--</span></div>
+        <p class="foot"><span class="dot">●</span> Based in Texas. We reply within one business day.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="stackline" aria-hidden="true">
+  <div class="stack-track">
+    <span>React</span><span>Node.js</span><span>Python</span><span>TypeScript</span><span>C# / .NET</span><span>Java</span><span>PostgreSQL</span><span>MongoDB</span><span>AWS</span><span>Docker</span><span>Selenium</span><span>OpenAI</span><span>Anthropic</span><span>Shopify</span><span>WordPress</span><span>CI/CD</span>
+    <span>React</span><span>Node.js</span><span>Python</span><span>TypeScript</span><span>C# / .NET</span><span>Java</span><span>PostgreSQL</span><span>MongoDB</span><span>AWS</span><span>Docker</span><span>Selenium</span><span>OpenAI</span><span>Anthropic</span><span>Shopify</span><span>WordPress</span><span>CI/CD</span>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="sec-label">Contact</p>
+    <h2>Tell us about your project</h2>
+    <p>Send us a short note about what you are building and where you are stuck. We will reply within one business day with our questions and honest availability. An initial conversation costs nothing.</p>
+    <div class="contact-card">
+      <div class="contact-item">
+        <div class="label">Email</div>
+        <div class="value"><a href="mailto:contact@statixx.dev">contact@statixx.dev</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Location</div>
+        <div class="value">Texas, USA</div>
+      </div>
+      <div class="contact-item">
+        <div class="label">Hours</div>
+        <div class="value">Mon to Fri, 9am to 6pm CT</div>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="mailto:contact@statixx.dev?subject=Project%20inquiry">Email us about your project</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Statixx Solutions. All rights reserved.</span>
+    <span><a href="mailto:contact@statixx.dev">contact@statixx.dev</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* live US time zone clocks */
+  function tick(){
+    document.querySelectorAll('.time[data-tz]').forEach(function(el){
+      try{
+        el.textContent = new Intl.DateTimeFormat('en-US',{
+          hour:'2-digit',minute:'2-digit',hour12:true,timeZone:el.dataset.tz
+        }).format(new Date());
+      }catch(e){ el.textContent = ''; }
+    });
+  }
+  tick(); setInterval(tick, 30000);
+
+  /* signal trace under the hero: smoothed noise resolving into a clean wave */
+  const c = document.getElementById('scope');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, t = 0;
+
+  // persistent noise control points, eased toward new targets so the
+  // static wanders instead of flickering
+  const STEP = 6;
+  let pts = [], targets = [];
+
+  function resize(){
+    const dpr = window.devicePixelRatio || 1;
+    w = c.clientWidth; h = c.clientHeight;
+    c.width = w*dpr; c.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n = Math.ceil(w/STEP)+2;
+    pts = new Array(n).fill(0).map(()=>Math.random()*2-1);
+    targets = pts.slice();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function smoothstep(a,b,x){
+    const k = Math.min(1, Math.max(0, (x-a)/(b-a)));
+    return k*k*(3-2*k);
+  }
+
+  function noiseAt(x){
+    const i = Math.floor(x/STEP);
+    const f = (x - i*STEP)/STEP;
+    const a = pts[i] || 0, b = pts[i+1] || 0;
+    const u = (1 - Math.cos(f*Math.PI))/2;   // cosine interpolation
+    return a*(1-u) + b*u;
+  }
+
+  function draw(){
+    // ease each control point toward its target; re-aim occasionally
+    for(let i=0;i<pts.length;i++){
+      pts[i] += (targets[i]-pts[i])*0.16;
+      if(Math.random() < 0.12) targets[i] = Math.random()*2-1;
+    }
+
+    ctx.clearRect(0,0,w,h);
+    const mid = h/2, amp = h*0.32;
+
+    // subtle instrument ticks along the midline, as in the v2 design
+    ctx.strokeStyle = 'rgba(154,165,184,0.35)';
+    ctx.lineWidth = 1;
+    for(let x=0; x<=w; x+=Math.max(56, w/18)){
+      ctx.beginPath(); ctx.moveTo(x, mid-4); ctx.lineTo(x, mid+4); ctx.stroke();
+    }
+
+    // main trace: noise on the left third easing into a clean signal
+    ctx.beginPath();
+    for(let x=0; x<=w; x++){
+      const p = x/w;
+      const mix = smoothstep(0.12, 0.62, p);           // where noise becomes signal
+      const clean = Math.sin((x*0.028) - t*0.04) * amp;
+      const rough = noiseAt(x) * amp * 0.75;           // smoothed static
+      const y = mid + rough*(1-mix) + clean*mix;
+      x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = '#2e5bff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    t++;
+    if(!reduced) requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+</body>
+</html>
