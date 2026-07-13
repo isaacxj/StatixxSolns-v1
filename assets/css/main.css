@@ -1,3 +1,19 @@
+@font-face{
+  font-family:'Schibsted Grotesk';
+  src:url('../fonts/schibsted-grotesk-var.woff2') format('woff2');
+  font-weight:400 900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Instrument Sans';
+  src:url('../fonts/instrument-sans-var.woff2') format('woff2');
+  font-weight:400 700;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Red Hat Mono';
+  src:url('../fonts/red-hat-mono-var.woff2') format('woff2');
+  font-weight:300 700;font-style:normal;font-display:swap;
+}
+
 :root{
   --paper:#f7f8fa;
   --paper-2:#ffffff;
@@ -49,7 +65,22 @@ nav{
   font-weight:600;transition:background .18s;
 }
 .nav-cta:hover{background:var(--signal)}
-@media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+.nav-toggle{
+  display:none;background:none;border:0;cursor:pointer;padding:10px;
+  margin-left:6px;color:var(--ink);
+}
+@media(max-width:640px){
+  .nav-toggle{display:inline-flex;align-items:center}
+  .nav-links{
+    position:absolute;top:68px;left:0;right:0;display:none;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:var(--paper-2);border-bottom:1px solid var(--hairline);
+    padding:8px 28px 20px;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 0;font-size:16px;width:100%}
+  .nav-links .nav-cta{width:auto;margin-top:10px;padding:10px 24px}
+}
 
 /* ---------- hero ---------- */
 .hero{padding:104px 0 0;border-bottom:1px solid var(--hairline);background:var(--paper-2)}
@@ -167,13 +198,18 @@ section{padding:104px 0}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- contact ---------- */
-#contact{background:var(--ink);color:#f2f5fa;padding:110px 0}
+#contact{
+  background:var(--ink);color:#f2f5fa;padding:110px 0;
+  border-top:3px solid var(--signal);
+}
 #contact .sec-label{color:#6f7d95}
-#contact h2{font-size:clamp(32px,5vw,50px);font-weight:600;max-width:22ch;color:#fff}
-#contact p{color:#aab4c6;margin:22px 0 0;max-width:54ch}
+#contact h2{font-size:clamp(32px,5vw,50px);font-weight:600;max-width:18ch;color:#fff}
+#contact .pitch{color:#aab4c6;margin:22px 0 0;max-width:44ch}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:start}
+@media(max-width:840px){.contact-grid{grid-template-columns:1fr;gap:52px}}
 .contact-card{
-  margin-top:44px;display:flex;gap:56px;flex-wrap:wrap;
-  border-top:1px solid #2a3550;padding-top:38px;
+  margin-top:40px;display:flex;flex-direction:column;gap:26px;
+  border-top:1px solid #2a3550;padding-top:34px;
 }
 .contact-item .label{
   font-family:'Red Hat Mono',monospace;font-size:11px;letter-spacing:.16em;
@@ -181,7 +217,33 @@ section{padding:104px 0}
 }
 .contact-item .value{font-size:18px;font-weight:500;color:#fff}
 .contact-item .value a{color:#9db4ff}
-#contact .btn-primary{margin-top:40px}
+.contact-foot{margin-top:30px;font-size:14px;color:#7c8699}
+.contact-foot .dot{color:var(--signal)}
+
+/* contact form */
+.form-card{
+  background:#131c30;border:1px solid #26324d;border-radius:16px;
+  padding:34px;box-shadow:0 8px 30px rgba(0,0,0,.25);
+}
+.form-field{margin-bottom:20px}
+.form-field label{
+  display:block;font-family:'Red Hat Mono',monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:#7c8699;margin-bottom:8px;
+}
+.form-field input,.form-field textarea{
+  width:100%;background:#0e1626;border:1px solid #2a3550;border-radius:10px;
+  padding:12px 14px;color:#fff;font-family:'Instrument Sans',system-ui,sans-serif;
+  font-size:15.5px;line-height:1.5;transition:border-color .18s;
+}
+.form-field input:focus,.form-field textarea:focus{
+  outline:none;border-color:var(--signal);
+  box-shadow:0 0 0 3px rgba(46,91,255,.22);
+}
+.form-field textarea{min-height:150px;resize:vertical}
+.form-submit{width:100%;border:0;cursor:pointer}
+.form-note{margin-top:16px;font-size:13.5px;color:#7c8699;text-align:center}
+.form-note a{color:#9db4ff}
+.honey{display:none}
 
 /* ---------- footer ---------- */
 footer{background:var(--ink);border-top:1px solid #232f47;padding:30px 0;font-size:13.5px;color:#6f7d95}

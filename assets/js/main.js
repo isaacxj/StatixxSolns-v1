@@ -11,6 +11,22 @@
   }
   tick(); setInterval(tick, 30000);
 
+  /* mobile nav */
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
   /* signal trace under the hero: dense static resolving into a clean wave */
   const c = document.getElementById('scope');
   if(!c) return;

@@ -9,16 +9,35 @@
 <meta property="og:description" content="We build websites, web applications, and business software for startups and small businesses across the United States.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://statixx.dev">
+<meta property="og:image" content="https://statixx.dev/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://statixx.dev/assets/og-image.png">
 <link rel="canonical" href="https://statixx.dev/">
 <meta name="theme-color" content="#0e1626">
 <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icons/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/schibsted-grotesk-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/red-hat-mono-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Statixx Solutions",
+  "url": "https://statixx.dev/",
+  "email": "contact@statixx.dev",
+  "description": "Software development and IT consulting for startups and small businesses across the United States.",
+  "logo": "https://statixx.dev/assets/icons/icon-512.png",
+  "image": "https://statixx.dev/assets/og-image.png",
+  "address": { "@type": "PostalAddress", "addressRegion": "TX", "addressCountry": "US" },
+  "areaServed": "US"
+}
+</script>
 </head>
 <body>
 
@@ -33,12 +52,17 @@
 <nav>
   <div class="wrap nav-inner">
     <a href="#top" class="brand">STATI<span class="xx">XX</span></a>
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
       <a href="#services">Services</a>
       <a href="#process">How We Work</a>
       <a href="#about">About</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="11" x2="19" y2="11"/><line x1="3" y1="16" x2="19" y2="16"/>
+      </svg>
+    </button>
   </div>
 </nav>
 
@@ -163,22 +187,22 @@
     <div class="sec-head">
       <div>
         <p class="sec-label">About</p>
-        <h2>A small company, on purpose</h2>
+        <h2>Engineers who ship</h2>
       </div>
     </div>
     <div class="about-grid">
       <div class="body">
-        <p><strong>Statixx Solutions</strong> is a software company run by engineers. The name comes from static, because that is how most projects arrive: a lot of noise and no clear picture. We spent years building and testing software at larger companies, and we started Statixx to do that work directly for the clients who need it.</p>
+        <p><strong>Statixx Solutions</strong> is a software development and IT consulting firm run by engineers. We spent years building and testing software at larger companies, and we started Statixx to do that work directly for the clients who need it.</p>
         <p>Being small is the point. When you hire us, the person you talk to is the person writing the code. Projects move faster, questions get straight answers, and nothing gets lost between departments.</p>
         <p>We work remotely with <strong>startups</strong> turning an idea into a working product and with <strong>small businesses</strong> that need their website, store, or internal tools built right the first time.</p>
       </div>
       <aside class="coverage" aria-label="US coverage">
-        <p class="cv-label">We work in every US time zone</p>
+        <p class="cv-label">We work across every US time zone</p>
         <div class="tz-row"><span class="zone">Eastern</span><span class="time" data-tz="America/New_York">--:--</span></div>
         <div class="tz-row"><span class="zone">Central</span><span class="time" data-tz="America/Chicago">--:--</span></div>
         <div class="tz-row"><span class="zone">Mountain</span><span class="time" data-tz="America/Denver">--:--</span></div>
         <div class="tz-row"><span class="zone">Pacific</span><span class="time" data-tz="America/Los_Angeles">--:--</span></div>
-        <p class="foot"><span class="dot">●</span> Based in Texas. We reply within one business day.</p>
+        <p class="foot"><span class="dot">●</span> We reply within one business day.</p>
       </aside>
     </div>
   </div>
@@ -193,24 +217,43 @@
 
 <section id="contact">
   <div class="wrap">
-    <p class="sec-label">Contact</p>
-    <h2>Tell us about your project</h2>
-    <p>Send us a short note about what you are building and where you are stuck. We will reply within one business day with our questions and honest availability. An initial conversation costs nothing.</p>
-    <div class="contact-card">
-      <div class="contact-item">
-        <div class="label">Email</div>
-        <div class="value"><a href="mailto:contact@statixx.dev">contact@statixx.dev</a></div>
+    <div class="contact-grid">
+      <div>
+        <p class="sec-label">Contact</p>
+        <h2>Tell us about your project</h2>
+        <p class="pitch">Send us a short note about what you are building and where you are stuck. We will reply within one business day with our questions and honest availability. An initial conversation costs nothing.</p>
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="label">Email</div>
+            <div class="value"><a href="mailto:contact@statixx.dev">contact@statixx.dev</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="label">Location</div>
+            <div class="value">Texas, USA &mdash; working in every US time zone</div>
+          </div>
+        </div>
+        <p class="contact-foot"><span class="dot">●</span> We reply within one business day.</p>
       </div>
-      <div class="contact-item">
-        <div class="label">Location</div>
-        <div class="value">Texas, USA</div>
-      </div>
-      <div class="contact-item">
-        <div class="label">Hours</div>
-        <div class="value">Mon to Fri, 9am to 6pm CT</div>
-      </div>
+      <form class="form-card" action="https://formsubmit.co/contact@statixx.dev" method="POST">
+        <input type="hidden" name="_subject" value="New project inquiry — statixx.dev">
+        <input type="hidden" name="_next" value="https://statixx.dev/thanks.html">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+        <div class="form-field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="cf-message">What are you building?</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button class="btn btn-primary form-submit" type="submit">Send message</button>
+        <p class="form-note">Prefer email? Write to <a href="mailto:contact@statixx.dev">contact@statixx.dev</a></p>
+      </form>
     </div>
-    <a class="btn btn-primary" href="mailto:contact@statixx.dev?subject=Project%20inquiry">Email us about your project</a>
   </div>
 </section>
 
